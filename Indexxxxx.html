@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔥 ATESHUB - EVERY SCRIPTS</title>
+  <style>
+    /* Arka plan RGB animasyon */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(270deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 1400% 1400%;
+      animation: moveBG 30s ease infinite;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    @keyframes moveBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Ana kutu */
+    .container {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 50px 40px 60px 40px;
+      border-radius: 25px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 30px #ff4500aa;
+      text-align: center;
+    }
+
+    /* Alevli başlık */
+    h1.fire {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 40px;
+      letter-spacing: 3px;
+      color: #fff;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 5px #ff4c00,
+        0 0 10px #ff7000,
+        0 0 20px #ffae00,
+        0 0 30px #ffae00,
+        0 0 40px #ff7000;
+      animation: flicker 1.5s infinite alternate;
+      user-select: none;
+    }
+
+    @keyframes flicker {
+      0% {
+        text-shadow:
+          0 0 5px #ff4c00,
+          0 0 10px #ff7000,
+          0 0 20px #ffae00,
+          0 0 30px #ffae00,
+          0 0 40px #ff7000;
+      }
+      100% {
+        text-shadow:
+          0 0 10px #ff7000,
+          0 0 20px #ffae00,
+          0 0 30px #ffae00,
+          0 0 40px #ff7000,
+          0 0 50px #ff4c00;
+      }
+    }
+
+    /* Butonlar - Tüm kutular büyük */
+    .btn {
+      display: block;
+      background: #28a745;
+      color: white;
+      font-weight: 700;
+      padding: 30px 0;
+      margin: 20px auto;
+      border-radius: 18px;
+      border: none;
+      cursor: pointer;
+      font-size: 26px;
+      box-shadow: 0 0 18px #28a745cc;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #218838;
+    }
+
+    /* Doğrulama ekranı */
+    #verification {
+      display: none;
+      margin-top: 30px;
+      user-select: none;
+    }
+    #captchaCanvas {
+      background: #222;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 20px auto 10px auto;
+      display: block;
+      box-shadow: 0 0 15px #28a745aa;
+      width: 320px;
+      height: 80px;
+      user-select: none;
+    }
+    #captchaInput {
+      width: 320px;
+      padding: 15px;
+      font-size: 20px;
+      border-radius: 15px;
+      border: none;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    #verifyBtn {
+      background-color: #007bff;
+      padding: 20px 0;
+      width: 320px;
+      font-size: 22px;
+      border-radius: 15px;
+      border: none;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 15px #007bffaa;
+      user-select: none;
+    }
+    #verifyBtn:hover {
+      background-color: #0056b3;
+    }
+    #attemptsLeft {
+      color: #ffcc00;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    #lockoutTimer {
+      color: #ff4444;
+      font-weight: 700;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    /* Yükleniyor ekranı */
+    #loadingScreen {
+      display: none;
+      margin-top: 30px;
+      user-select: none;
+    }
+    #loadingText {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 15px;
+      letter-spacing: 3px;
+    }
+    #progressBarContainer {
+      width: 320px;
+      height: 30px;
+      background: #222;
+      border-radius: 20px;
+      box-shadow: inset 0 0 15px #000;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: #28a745;
+      border-radius: 20px 0 0 20px;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 15px #28a745bb;
+    }
+    #loadingPercent {
+      margin-top: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #28a745;
+      text-align: center;
+      user-select: none;
+    }
+    #disclaimer {
+      margin-top: 15px;
+      color: #ff6666;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      user-select: none;
+    }
+
+    /* Kanal link sağ altta */
+    .channel-link {
+      position: fixed;
+      bottom: 12px;
+      right: 15px;
+      font-size: 14px;
+      color: #00ffff;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 14px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffffbb;
+      transition: background 0.3s;
+      user-select: none;
+      z-index: 1000;
+    }
+    .channel-link:hover {
+      background: rgba(0, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="fire">ATESHUB - EVERY SCRIPTS</h1>
+    <button class="btn" data-link="https://ateshubsar.netlify.app">Steal A Car</button>
+    <button class="btn" data-link="https://ateshubbuildabrainrot.netlify.app">Build A BrainRot</button>
+    <button class="btn" data-link="https://wondrous-heliotrope-2d6a24.netlify.app">Ink Game</button>
+    <button class="btn" data-link="https://ateshubsab.netlify.app/">Steal A Brainrot</button>
+
+    <div id="verification">
+      <div id="attemptsLeft">Attempts left: 3</div>
+      <canvas id="captchaCanvas" title="Click to refresh captcha"></canvas>
+      <input id="captchaInput" type="text" placeholder="Enter the number above" autocomplete="off" />
+      <button id="verifyBtn">Verify</button>
+      <div id="lockoutTimer"></div>
+    </div>
+
+    <div id="loadingScreen">
+      <div id="loadingText">LOADING</div>
+      <div id="progressBarContainer">
+        <div id="progressBar"></div>
+      </div>
+      <div id="loadingPercent">0%</div>
+      <div id="disclaimer">❗ We are not responsible if you get banned using this script.</div>
+    </div>
+  </div>
+
+  <a href="https://www.youtube.com/@mrateshubberr" target="_blank" class="channel-link">👉 Visit my channel</a>
+
+  <script>
+    const buttons = document.querySelectorAll('.btn');
+    const verification = document.getElementById('verification');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const attemptsLeftDisplay = document.getElementById('attemptsLeft');
+    const captchaCanvas = document.getElementById('captchaCanvas');
+    const captchaInput = document.getElementById('captchaInput');
+    const verifyBtn = document.getElementById('verifyBtn');
+    const lockoutTimer = document.getElementById('lockoutTimer');
+    const progressBar = document.getElementById('progressBar');
+    const loadingPercent = document.getElementById('loadingPercent');
+
+    let currentLink = "";
+    let generatedCode = "";
+    let attemptsLeft = 3;
+    let isLocked = false;
+
+    // Ses efektleri
+    function playSuccessSound() {
+      const ctx = new AudioContext();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = 'triangle';
+      o.frequency.setValueAtTime(880, ctx.currentTime);
+      g.gain.setValueAtTime(0.1, ctx.currentTime);
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      o.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.3);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      o.stop(ctx.currentTime + 0.3);
+    }
+
+    function playClickSound() {
+      const ctx = new AudioContext();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = 'square';
+      o.frequency.setValueAtTime(440, ctx.currentTime);
+      g.gain.setValueAtTime(0.05, ctx.currentTime);
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+      o.stop(ctx.currentTime + 0.15);
+    }
+
+    // Captcha oluşturma
+    function drawCaptcha() {
+      const ctx = captchaCanvas.getContext('2d');
+      const width = captchaCanvas.width = 320;
+      const height = captchaCanvas.height = 80;
+      ctx.clearRect(0, 0, width, height);
+
+      // Arka plan
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, '#000');
+      gradient.addColorStop(1, '#111');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      // Gürültü için küçük noktalar
+      for(let i = 0; i < 100; i++) {
+        ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.1})`;
+        ctx.beginPath();
+        ctx.arc(Math.random() * width, Math.random() * height, 1.5, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      // Rakam üretimi
+      generatedCode = '';
+      const digits = '0123456789';
+      for(let i = 0; i < 4; i++) {
+        const digit = digits.charAt(Math.floor(Math.random() * digits.length));
+        generatedCode += digit;
+      }
+
+      // Rakamları çiz
+      ctx.font = '50px Arial Black';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center';
+      for(let i = 0; i < generatedCode.length; i++) {
+        const x = 40 + i * 70;
+        const y = height / 2;
+        ctx.fillStyle = `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)}, 0.9)`;
+        ctx.shadowColor = '#000';
+        ctx.shadowBlur = 3;
+        ctx.fillText(generatedCode.charAt(i), x, y);
+      }
+    }
+
+    captchaCanvas.addEventListener('click', drawCaptcha);
+
+    // Doğrulama işlemi
+    verifyBtn.addEventListener('click', () => {
+      if(isLocked) return;
+      const userInput = captchaInput.value.trim();
+      if(userInput === generatedCode) {
+        playSuccessSound();
+        verification.style.display = "none";
+        loadingScreen.style.display = "block";
+        startLoading();
+      } else {
+        attemptsLeft--;
+        attemptsLeftDisplay.textContent = `Attempts left: ${attemptsLeft}`;
+        if(attemptsLeft <= 0) {
+          lockUser();
+        } else {
+          captchaInput.value = "";
+          drawCaptcha();
+        }
+      }
+    });
+
+    function lockUser() {
+      isLocked = true;
+      lockoutTimer.textContent = "Too many attempts! Try again in 20 seconds.";
+      verifyBtn.disabled = true;
+      captchaInput.disabled = true;
+      let countdown = 20;
+      const interval = setInterval(() => {
+        countdown--;
+        lockoutTimer.textContent = `Try again in ${countdown} seconds.`;
+        if(countdown <= 0) {
+          clearInterval(interval);
+          isLocked = false;
+          attemptsLeft = 3;
+          attemptsLeftDisplay.textContent = `Attempts left: ${attemptsLeft}`;
+          lockoutTimer.textContent = "";
+          verifyBtn.disabled = false;
+          captchaInput.disabled = false;
+          captchaInput.value = "";
+          drawCaptcha();
+        }
+      }, 1000);
+    }
+
+    // Yükleniyor animasyonu
+    function startLoading() {
+      let progress = 0;
+      progressBar.style.width = '0%';
+      loadingPercent.textContent = '0%';
+
+      const interval = setInterval(() => {
+        progress++;
+        progressBar.style.width = progress + '%';
+        loadingPercent.textContent = progress + '%';
+        if(progress >= 100) {
+          clearInterval(interval);
+          window.location.href = currentLink;
+        }
+      }, 50);
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if(isLocked) return;
+        playClickSound();
+        currentLink = btn.getAttribute('data-link');
+        verification.style.display = "block";
+        loadingScreen.style.display = "none";
+        attemptsLeft = 3;
+        attemptsLeftDisplay.textContent = `Attempts left: ${attemptsLeft}`;
+        captchaInput.value = "";
+        drawCaptcha();
+        lockoutTimer.textContent = "";
+        verifyBtn.disabled = false;
+        captchaInput.disabled = false;
+      });
+    });
+
+    // Sayfa yüklendiğinde captcha hazırla
+    window.onload = () => {
+      drawCaptcha();
+    };
+  </script>
+</body>
+</html>
